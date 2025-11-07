@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" data-mdb-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="{% static 'img/UTC_icono.ico' %}" />
+    <title>{% block title %}Falcon Asistente{% endblock %} | Asistente UTC</title>
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem('data-mdb-theme') || 'light';
+            document.documentElement.setAttribute('data-mdb-theme', theme);
+        })();
+        (function () {
+            const themeColor = localStorage.getItem('data-color_prefer') || 'blue';
+            document.documentElement.setAttribute('data-color_prefer', themeColor);
+        })();
+    </script>
+
+    <link rel="preload" href="{% static 'css/mdb_fontawesome.min.css' %}" as="style" />
+    <link rel="preload" href="{% static 'js/libraries.min.js' %}" as="script" />
+
+    {% block extra_head %}{% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/mdb_fontawesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* NAVBAR */
+        nav.navbar {
+            width: 100%;
+            padding: 15px 0;
+            background: transparent !important;
+            display: flex !important;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Contenedor flex de logo y links */
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Logo */
+        .navbar-inner img {
+            height: 40px;
+            margin-left: 24px;
+            margin-right: 42px;
+        }
+
+        /* Botones/links */
+        nav.navbar a {
+            color: #273c67 !important;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px !important;
+            transition: 0.3s ease;
+            border-radius: 4px;
+        }
+
+        nav.navbar a:hover {
+            background: #273c67 !important;
+            color: white !important;
+        }
+
+        /* Separación mayor entre botones */
+        nav.navbar .navbar-nav {
+            display: flex;
+            gap: 20px; /* Aumenta este valor para más separación */
+            justify-content: flex-start;
+        }
+
+        /* Botón hamburguesa */
+        .navbar-toggler {
+            border: none;
+            background: transparent;
+            font-size: 25px;
+        }
+
+        .navbar-toggler i {
+            color: #273c67;
+        }
+
+        /* Menú colapsado transparente */
+        #navbarSimple {
+            background: transparent !important;
+        }
+
+        *::-webkit-scrollbar {
+            width: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg custom-nav">
+    <div class="container-fluid navbar-inner">
+
+        <img src="{% static 'img/Logo.png' %}" alt="UTC">
+
+        <button class="navbar-toggler" type="button" data-mdb-collapse-init
+            data-mdb-target="#navbarSimple" aria-controls="navbarSimple" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+       <div class="collapse navbar-collapse" id="navbarSimple">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link {% if active_page == 'admin_banners' %}active{% endif %}" href="{% url 'upload_banner' %}">Banners</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_page == 'admin_blog' %}active{% endif %}" href="{% url 'create_blog' %}">Blog Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_page == 'admin_calendario' %}active{% endif %}" href="{% url 'calendario_page' %}">Calendario</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_page == 'admin_database' %}active{% endif %}" href="{% url 'database_page' %}">Base de Datos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_page == 'admin_mapa' %}active{% endif %}" href="{% url 'update_mapa' %}">Mapa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_page == 'admin_perfil' %}active{% endif %}" href="{% url 'perfil' %}">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_page == 'admin_galeria' %}active{% endif %}" href="{% url 'vista_galeria' %}">Vista Galería</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_page == 'admin_programador' %}active{% endif %}" href="{% url 'vista_programador' %}">Vista Programador</a>
+                </li>
+                <!-- Botón de Cerrar Sesión -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: red; font-weight: bold;">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<div id="overlayMenu" class="menu_overlay"></div>
+
+<script src="{% static 'js/libraries.min.js' %}"></script>
+<script src="{% static 'js/settings.min.js' %}"></script>
+
+{% block scripts_end %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropdownEls = document.querySelectorAll("[data-mdb-dropdown-init]");
+        dropdownEls.forEach(el => new mdb.Dropdown(el));
+    });
+</script>
+{% endblock %}
+
+</body>
+</html>

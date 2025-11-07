@@ -1,0 +1,155 @@
+🚀 INSTRUCCIONES DE INSTALACIÓN - CHATBOT FALCON UTC
+================================================================
+
+Este proyecto incluye un chatbot inteligente con Google Gemini AI para la Universidad Tecnológica de Coahuila.
+
+📋 REQUERIMIENTOS DEL SISTEMA
+============================
+
+1. Python 3.8 o superior
+2. Django 5.0.6
+3. Cuenta de Google Gemini API (gratuita)
+4. Git (para clonar el repositorio)
+
+🔧 INSTALACIÓN PASO A PASO
+==========================
+
+1️⃣ CLONAR EL REPOSITORIO:
+git clone https://github.com/Josue0Cg/Proyect_Falcon.git
+cd Proyect_Falcon
+
+2️⃣ CREAR ENTORNO VIRTUAL:
+python -m venv .venv
+
+3️⃣ ACTIVAR ENTORNO VIRTUAL:
+# En Windows:
+.venv\Scripts\activate
+
+# En Linux/Mac:
+source .venv/bin/activate
+
+4️⃣ INSTALAR DEPENDENCIAS:
+pip install -r requirements.txt
+
+Si requirements.txt no incluye las nuevas dependencias, instalar manualmente:
+pip install google-generativeai
+pip install python-dotenv
+pip install beautifulsoup4
+pip install requests
+
+5️⃣ CONFIGURAR API KEY DE GEMINI:
+- Ve a: https://makersuite.google.com
+- Crea una cuenta gratuita con Google
+- Obtén tu API Key
+- Crea un archivo .env en la raíz del proyecto con:
+
+GEMINI_API_KEY=tu_clave_api_aqui_sin_comillas
+
+IMPORTANTE: Nunca subas tu .env al repositorio (ya está en .gitignore)
+
+6️⃣ MIGRAR BASE DE DATOS:
+python manage.py migrate
+
+7️⃣ CARGAR DATOS DEL CHATBOT:
+Los datos ya están incluidos en exported_data/utc_training_data_20251105_192821.json
+Contiene 128 entradas con información específica de la UTC y enlaces funcionales.
+
+8️⃣ EJECUTAR SERVIDOR:
+python manage.py runserver
+
+Alternativamente, usar el script:
+start_server.bat
+
+📁 ARCHIVOS NUEVOS AGREGADOS
+=============================
+
+🤖 CHATBOT GEMINI:
+- gemini_config.py           # Configuración del sistema Gemini
+- utc_gemini_chatbot.py      # Chatbot principal con IA
+- gemini_trainer.py          # Sistema de entrenamiento avanzado
+- utc_advanced_trainer.py    # Entrenador con mejoras específicas
+- utc_links_trainer.py       # Sistema de enlaces inteligentes
+- utc_web_searcher.py        # Búsqueda web en tiempo real
+
+📊 DATOS Y CONFIGURACIÓN:
+- exported_data/utc_training_data_20251105_192821.json  # Base de conocimientos (128 entradas)
+
+🧪 SCRIPTS DE PRUEBA:
+- quick_test_falcon.py           # Prueba rápida del chatbot
+- test_chatbot_system.py         # Pruebas completas del sistema
+- test_gemini_interactive.py     # Pruebas interactivas
+- test_clickeable_links.py       # Verificar enlaces clickeables
+- test_direct_links.py          # Probar enlaces directos
+- test_web_chatbot.py           # Pruebas web del chatbot
+- update_working_links.py       # Script para limpiar enlaces rotos
+- verify_multiple_links.py      # Verificar múltiples enlaces
+
+🛠️ UTILIDADES:
+- start_server.bat              # Script para iniciar servidor fácilmente
+- quick_check.py               # Verificación rápida del sistema
+
+🎯 FUNCIONALIDADES DEL CHATBOT
+===============================
+
+✅ IMPLEMENTADAS:
+- Integración con Google Gemini 2.0-flash
+- Base de conocimientos con 128 preguntas específicas de la UTC
+- Sistema híbrido: Base de datos + IA + Búsqueda web
+- Enlaces clickeables automáticos en frontend
+- Solo enlaces funcionales (eliminados los 404)
+- Mi Portal UTC y Mi Aula UTC incluidos
+- Respuestas naturales sin prefijos robóticos
+- Sistema de respaldo si Gemini falla
+
+🔧 CONFIGURACIÓN AVANZADA (OPCIONAL)
+====================================
+
+Para desarrolladores que quieran personalizar:
+
+1. Modificar prompts del sistema en gemini_config.py
+2. Agregar más datos en la base de conocimientos
+3. Configurar nuevos enlaces en utc_links_trainer.py
+4. Ajustar parámetros de IA (temperatura, tokens, etc.)
+
+🧪 VERIFICAR INSTALACIÓN
+========================
+
+1. Ejecutar pruebas básicas:
+python quick_test_falcon.py
+
+2. Probar chatbot web:
+- Iniciar servidor: python manage.py runserver
+- Ir a: http://127.0.0.1:8000/
+- Probar el chatbot en la página
+
+3. Preguntas de prueba recomendadas:
+- "¿Quién es el rector de la UTC?"
+- "¿Qué carreras ofrece la UTC?"
+- "¿Tienes algún enlace de la UTC?"
+- "¿Cuándo es la ceremonia de graduación?"
+
+🔧 SOLUCIÓN DE PROBLEMAS
+========================
+
+❌ Error: "GEMINI_API_KEY no configurada"
+✅ Solución: Crear archivo .env con tu API key
+
+❌ Error: "No module named 'google.generativeai'"
+✅ Solución: pip install google-generativeai
+
+❌ Chatbot da respuestas genéricas
+✅ Solución: Verificar que existe exported_data/utc_training_data_20251105_192821.json
+
+❌ Enlaces no son clickeables
+✅ Solución: El JavaScript los convierte automáticamente, verificar en navegador
+
+📞 SOPORTE
+==========
+
+Si tienes problemas:
+1. Revisa que todos los archivos estén en su lugar
+2. Verifica la API key de Gemini
+3. Asegúrate que el entorno virtual esté activado
+4. Consulta los logs del servidor Django para errores específicos
+
+¡El chatbot FALCON está listo para ayudar a los estudiantes de la UTC! 🤖🎓

@@ -1,0 +1,5 @@
+{
+  "rector_prompt": "\nPara preguntas sobre el rector, siempre incluye:\n- Nombre completo: Sergio Alberto Guadarrama Cortés\n- Su visión de modernización\n- Logros principales en infraestructura\n- Enfoque en excelencia educativa\nMantén un tono respetuoso y profesional.\n",
+  "carreras_prompt": "\nPara preguntas sobre carreras:\n- Lista las opciones disponibles (TSU e Ingenierías)\n- Menciona duración (2 años TSU + 1.8 años Ingeniería)\n- Incluye campos de trabajo\n- Sugiere contactar para más detalles\n",
+  "general_prompt": "\nPara preguntas generales:\n- Usa conocimiento específico de UTC cuando esté disponible\n- Combina con conocimiento general si es apropiado\n- Mantén respuestas naturales y conversacionales\n- Sugiere recursos adicionales cuando sea necesario\n"
+}
